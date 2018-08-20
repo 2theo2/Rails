@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsBelt</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-8">
+				<% if flash[:danger] %>
+					<% flash[:danger].each do |e| %>
+						<div class="alert alert-danger">
+							<%= e %>
+						</div>	
+					<% end %>
+				<% end %>
+			</div>
+			<div class="col-4">
+				<% if current_user %>
+					<a href="/songs">Dashboard</a> |
+					<a href="/sessions" data-method="delete">Logout</a>
+					<form action="/sessions" method="post">
+    				</form>
+				<% end %> 
+			</div>
+		</div>
+	<%= yield %>
+	</div>
+</body>
+</html>

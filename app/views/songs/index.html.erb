@@ -1,0 +1,56 @@
+<body>
+<div class="container">
+	<div class="row">
+		<h1>Welcome, <%= @user.first_name %> <%= @user.last_name %>!</h1>
+	</div>
+	<div class="row">
+		<h2>All the songs in our hub:</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Artist</th>
+					<th scope="col">Title</th>
+					<th scope="col">Number of Times the Song Has Been Added</th>
+					<th scope="col">Add to Playlist</th>
+				</tr>
+			</thead>
+		  <tbody>
+		  	<% @songs.each do |s| %>
+		    <tr>
+		      <th scope="row"><%= s.artist %></th>
+		      <td><a href="/songs/<%= s.id %>"><%= s.title %></a></td>
+		      <td><%= Add.where(song: s).count %></td>
+		      <td>
+		      	<form action="/adds/<%= s.id %>" method ="post">
+		      		<input type = "hidden" name="authenticity_token" value = "<%= form_authenticity_token %>">
+		      		<button type="submit" class="btn btn-secondary">Add</button>
+	      		</form>
+		      	
+		      </td>
+		    </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+	<div class="row">
+		<div class="col-6">
+		<h2>Add a Song:</h2>
+		<div>
+			<form action = "/songs" method = "post">
+  				<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+				  <label>Artist</label>
+				  <input type = "text" name = "song[artist]" id = "song_artist">
+			</div>
+			<div>
+				  <label>Title</label>
+				  <input type = "text" name = "song[title]" id = "song_title">
+			</div>
+			<div>
+				<button type="submit" class="btn btn-secondary">Add</button>
+			</div>
+		</form>
+		</div>
+	</div>
+
+</div>
+</body>

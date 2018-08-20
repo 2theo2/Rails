@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+		<h1>Welcome!</h1>
+	</div>
+	<div class="row">
+		<div class="col">
+			<h2>Register</h2>
+			<div>
+			<form action = "/users" method = "post">
+  				<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+				  <label>First Name</label>
+				  <input type = "text" name = "user[first_name]" id = "user_first_name">
+			</div>
+			<div>
+				  <label>Last Name</label>
+				  <input type = "text" name = "user[last_name]" id = "user_last_name">
+			</div>
+			<div>
+				  <label>Email     </label>
+				  <input type = "text" name = "user[email]" id = "user_email">
+			</div>
+			<div>
+    			<label>Password</label>
+  				<input type = "password" name = "user[password]" id = "user_password">
+ 				<p>*Password should be at least 8 Characters</p>
+			</div>
+			<div>
+				<label>Confirm Password</label>
+				<input type = "password" name = "user[password_confirmation]" id = "user_confirm_pw">
+				<input type = "submit" value = "Register">
+			</form>
+			</div>
+		</div>
+		<div class="col">
+			<div>
+				<h2>Login</h2>
+				<form action = "/sessions" method = "post">
+  				<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+    			<label>Email</label>
+				<input type = "text" name = "email" id = "user_email">
+			</div>
+			<div>
+				<label>Password</label>
+				<input type = "password" name = "password" id = "user_password">
+				<input type = "submit" value = "Login">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-8">
+		<h3><%= @user.first_name %> <%= @user.last_name %>'s Playlist</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Artist</th>
+					<th scopt="col">Title</th>
+					<th scope="col">Times Added</th>
+				<tr>
+			</thead>
+		  <tbody>
+		  	<% @songs.each do |a| %>
+		    <tr>
+		      <th scope="row"><%=a.artist%></th>
+		      <td><%=a.title %></td>
+		      <td><%= Add.where(user_id: params[:id], song: a).count %></td>
+		    </tr>
+		    <% end %>
+		  </tbody>
+		</table>  
+		</div>
+	</div>
+</div>
+</body>
